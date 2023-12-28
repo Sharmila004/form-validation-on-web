@@ -1,0 +1,214 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment 6</title>
+
+    <script>
+      function ValidateForm() {
+        var n = document.forms["RegForm"]["name"].value;
+        var p = document.forms["RegForm"]["mobile_phone"].value;
+        var e = document.forms["RegForm"]["email"].value;
+        var pa = document.forms["RegForm"]["password"].value;
+        var s = document.forms["RegForm"]["subject"].value;
+
+        var letters = /^[a-zA-Z]+$/;
+        var mobile_pattern = /^[0-9]{10}$/;
+        var email_pattern = /^[a-zA-Z_.-]+@[a-zA-z]+\.[a-zA-z]{2,4}$/;
+        var password = /^[a-zA-Z0-9 ]{6}$/;
+
+        if (n == "") {
+          alert("PLease Enter Your Name");
+          document.forms["RegForm"]["name"].focus();
+          return false;
+        } else if (n.match(letters)) {
+          alert("Your NAme is Valid" + " " + n);
+        } else {
+          alert("Please enter Valid Name between 6 to 10 characters");
+          document.forms["RegForm"]["name"].focus();
+          document.forms["RegForm"]["name"].value = "";
+
+          return false;
+        }
+
+        if (p == "") {
+          alert("PLease Enter Your Mobile Number");
+          p.focus();
+          return false;
+        } else if (p.match(mobile_pattern)) {
+          alert("Your Mobile Number is Valid" + " " + p);
+        } else {
+          alert("Please enter Valid Mobile Number");
+          p.focus();
+          p.value = "";
+          return false;
+        }
+
+        if (e == "") {
+          alert("PLease Enter Your Email ID");
+          e.focus();
+          return false;
+        } else if (e.match(email_pattern)) {
+          alert("Your Email ID is Valid" + " " + e);
+        } else {
+          alert("Please enter Valid Email ID");
+          e.focus();
+          e.value = "";
+          return false;
+        }
+
+        if (pa == "") {
+          alert("PLease Enter Password");
+          pa.focus();
+          return false;
+        } else if (pa.match(password)) {
+          alert("Your password is Valid");
+        } else {
+          alert("Please enter Valid password with minimum 6 characters");
+          pa.focus();
+          pa.value = "";
+          return false;
+        }
+
+        if (s.selectIndex < 1) {
+          alert("Please Select any one Course");
+          s.focus();
+          return false;
+        } else {
+          alert("Your Selected Course is" + " " + s);
+        }
+
+        return true;
+      }
+    </script>
+    <style>
+      input[type="text"],
+      select {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid black;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      #name,
+      #email {
+        position: relative;
+        left: 300px;
+      }
+      #mobile_phone {
+        position: relative;
+        left: 215px;
+      }
+      input[type="password"],
+      select {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid black;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      #password {
+        position: relative;
+        left: 270px;
+      }
+      #subject {
+        position: relative;
+        left: 110px;
+      }
+      input[type="submit"] {
+        width: 15%;
+        background-color: #372ae9;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="reset"] {
+        width: 15%;
+        background-color: #372ae9;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="button"] {
+        width: 15%;
+        background-color: #372ae9;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #fc004c;
+      }
+
+      input[type="reset"]:hover {
+        background-color: #fc004c;
+      }
+
+      input[type="button"]:hover {
+        background-color: #fc004c;
+      }
+      select {
+        width: 25%;
+        padding: 16px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #f1f1f1;
+      }
+      h1 {
+        text-align: center;
+      }
+      a {
+        text-decoration: none;
+        color: red;
+      }
+      a:hover {
+        color: rgb(0, 255, 234);
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>REGISTRATION FORM</h1>
+    <form
+      id="RegForm"
+      onsubmit="return ValidateForm();"
+      method="get"
+      action="login.html"
+    >
+      Name: <input type="text" id="name" />
+      <br />
+      Mobile Number: <input type="text" id="mobile_phone" />
+      <br />
+      Email : <input type="text" id="email" />
+      <br />
+      Password : <input type="password" id="password" />
+      <br />
+
+      SELECT YOUR COURSE :
+      <select type="text" value="subject" id="subject">
+        <option>B.Tech(AI/ML)</option>
+        <option>MBA</option>
+        <option>B.TECH</option>
+        <option>M.TECH</option>
+      </select>
+      <br />
+      <input type="submit" value="SUBMIT" id="submit" />
+      <input type="reset" value="RESET" id="reset" />
+    </form>
+    <p>Have account <a href="login.html"> Login</a></p>
+  </body>
+</html>
